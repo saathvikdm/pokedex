@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Pokemon Details</h1>
+<div mat-dialog-content>
+  <img [src]="pokeData.sprites?.front_default" height="200px" width="200px">
+  <h2>{{data.name}}</h2>
+  <hr>
+  <h3>Abilities</h3>
+  <li *ngFor="let ability of pokeData.abilities">{{ability.ability.name}}</li>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>

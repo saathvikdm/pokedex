@@ -1,0 +1,31 @@
+.characters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto 5em;
+}
+
+.app-search {
+    margin: 2em auto;
+    /* background-color: white; */
+    /* padding-bottom: 0; */
+}
+
+.app-search-input {
+    max-width: 500px;
+    width: 100%;
+    /* background-color: white; */
+}
+
+.color-white {
+    color: black;
+}
+
+

@@ -1,0 +1,18 @@
+<div class="app-container">
+    
+    <div class="app-search form-group">
+        <mat-form-field appearance="fill" class="app-search-input">
+            <mat-label class="color-white ">Search Pokemon</mat-label>
+            <input matInput type="text" class="color-white " [(ngModel)]="searchText" placeholder="Enter text to search">
+            <button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="searchText=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+      </div>
+      <div class="characters">
+        <app-character-item
+            *ngFor="let poke of pokemon | pokeFilter: searchText"
+            [pokemon]="poke"
+        ></app-character-item>
+    </div>    
+</div>
