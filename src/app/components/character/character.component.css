@@ -14,14 +14,20 @@
 
 .app-search {
     margin: 2em auto;
-    /* background-color: white; */
-    /* padding-bottom: 0; */
+    display: flex;
+    justify-content: center;
 }
 
 .app-search-input {
     max-width: 500px;
     width: 100%;
+    margin-left: 1em;
     /* background-color: white; */
+}
+
+.app-filter {
+    color: white;
+    margin-bottom: 1em;
 }
 
 .color-white {

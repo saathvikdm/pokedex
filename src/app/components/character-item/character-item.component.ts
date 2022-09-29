@@ -34,25 +34,3 @@ export class CharacterItemComponent implements OnInit {
 
   ngOnInit(): void {}
 }
-
-// @Component({
-//   selector: 'character-item-dialog',
-//   templateUrl: 'character-item-dialog.component.html',
-// })
-// export class CharacterItemDialog {
-//   pokeData: any;
-
-//   constructor(
-//     @Inject(MAT_DIALOG_DATA) public data: any,
-//     private characterService: CharacterService
-//   ) {}
-
-//   ngOnInit(): void {
-//     this.pokeData = this.characterService
-//       .getPokemonDetails(this.data.url) // Gets details about pokemon from the service
-//       .subscribe((pokemon) => {
-//         console.log(pokemon);
-//         this.pokeData = pokemon;
-//       });
-//   }
-// }

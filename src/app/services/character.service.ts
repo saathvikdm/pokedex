@@ -12,7 +12,7 @@ const HttpOptions = {
   providedIn: 'root',
 })
 export class CharacterService {
-  private apiURL = 'https://pokeapi.co/api/v2/pokemon?limit=50';
+  private apiURL = 'https://pokeapi.co/api/v2/pokemon?limit=1000';
 
   constructor(private http: HttpClient) {}
 
@@ -22,5 +22,13 @@ export class CharacterService {
 
   getPokemonDetails(pokeURL: string): Observable<any> {
     return this.http.get<any>(pokeURL);
+  }
+
+  getPokemonTypes(): Observable<any> {
+    return this.http.get<any>('https://pokeapi.co/api/v2/type');
+  }
+
+  getPokemonsByType(type: string): Observable<any> {
+    return this.http.get<any>(`https://pokeapi.co/api/v2/type/${type}`);
   }
 }

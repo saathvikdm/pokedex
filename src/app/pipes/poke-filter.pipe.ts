@@ -14,7 +14,6 @@ export class PokeFilterPipe implements PipeTransform {
     searchText = searchText.toLocaleLowerCase();
 
     return items.filter((it) => {
-      console.log(it.name.includes(searchText));
       return it.name.includes(searchText);
     });
   }
