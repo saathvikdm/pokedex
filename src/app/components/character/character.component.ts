@@ -17,6 +17,7 @@ export class CharacterComponent implements OnInit {
 
   clickMenuItem(type: any) {
     this.typeFilter = type.name;
+    this.p = 1;
     console.log(this.typeFilter);
     this.characterService
       .getPokemonsByType(this.typeFilter)
@@ -25,9 +26,14 @@ export class CharacterComponent implements OnInit {
       });
   }
 
+  searchFilter() {
+    this.p = 0;
+  }
+
   clickMenuReset() {
     this.characterService.getPokemon().subscribe((pokemon) => {
       console.log(pokemon);
+      this.typeFilter = '';
       this.pokemon = pokemon?.results;
     });
   }

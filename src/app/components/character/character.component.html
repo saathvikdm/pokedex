@@ -3,13 +3,13 @@
       <img src="../../../assets/pokeball.png" height="50px" width="50px">
         <mat-form-field appearance="fill" class="app-search-input">
             <mat-label class="color-white ">Search Pokemon</mat-label>
-            <input matInput type="text" class="color-white " [(ngModel)]="searchText" placeholder="Enter text to search">
+            <input matInput type="text" class="color-white " [(ngModel)]="searchText" (input)="searchFilter()" placeholder="Enter text to search">
             <button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="searchText=''">
               <mat-icon>close</mat-icon>
             </button>
           </mat-form-field>
-          <button mat-button [matMenuTriggerFor]="menu"  class="app-filter">Filter by Type</button>
-          <mat-menu #menu="matMenu" [(ngModel)]="typeFilter" >
+          <button mat-button [matMenuTriggerFor]="menu"  class="app-filter">{{typeFilter ? "Type: " + typeFilter.toUpperCase() : 'Filter by Type'}}</button>
+          <mat-menu #menu="matMenu" [(ngModel)]="typeFilter" ngDefaultControl>
             <button mat-menu-item (click)="clickMenuReset()">Reset Filter</button>
             <button mat-menu-item *ngFor="let type of types" (click)="clickMenuItem(type)">{{type['name']}}</button>
           </mat-menu>
