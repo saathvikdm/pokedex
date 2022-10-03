@@ -11,3 +11,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .ngx-pagination a, .ngx-pagination button {
     color: white !important;
 }
+
+.mat-dialog-container {
+    min-width: 255px;
+}
+

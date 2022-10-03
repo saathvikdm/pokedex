@@ -18,6 +18,7 @@ import { CharacterItemComponent } from './components/character-item/character-it
 import { CharacterItemDialogComponent } from './components/character/character-item-dialog/character-item-dialog.component';
 
 import { PokeFilterPipe } from './pipes/poke-filter.pipe';
+import { MypokemonComponent } from './components/mypokemon/mypokemon.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { PokeFilterPipe } from './pipes/poke-filter.pipe';
     CharacterItemComponent,
     CharacterItemDialogComponent,
     PokeFilterPipe,
+    MypokemonComponent,
   ],
   imports: [
     BrowserModule,

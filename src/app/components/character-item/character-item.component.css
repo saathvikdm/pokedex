@@ -13,4 +13,5 @@
 .character-name {
     background-color: inherit;
     color: #073b4c;
+    text-transform: capitalize;
 }

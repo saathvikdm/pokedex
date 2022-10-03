@@ -7,5 +7,7 @@
   <li *ngFor="let ability of pokeData.abilities">{{ability.ability.name}}</li>
 </div>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
+  <button mat-raised-button mat-dialog-close>Close</button>
+  <button *ngIf="currentRoute === '/'" mat-raised-button color="primary" (click)="catchPokemon()">Catch Pokemon</button>
+  <button *ngIf="currentRoute === '/my-pokemon'" mat-raised-button color="primary" (click)="releasePokemon()">Release</button>
 </div>

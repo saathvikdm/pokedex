@@ -40,7 +40,9 @@ export class CharacterComponent implements OnInit {
 
   ngOnInit(): void {
     this.characterService.getPokemonTypes().subscribe((type) => {
-      this.types = type?.results;
+      this.types = type?.results.filter(
+        (type: any) => type.name !== 'unknown' && type.name !== 'shadow'
+      );
     });
 
     this.characterService.getPokemon().subscribe((pokemon) => {

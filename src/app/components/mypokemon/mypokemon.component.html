@@ -1,0 +1,10 @@
+<div class="my-pokemon">
+    <h1>My Pokemon Collection</h1>
+    <div class="characters">
+    <app-character-item
+          *ngFor="let poke of pokemon"
+          [pokemon]="poke"
+          (releasePoke)="releasePokemon($event)"
+      ></app-character-item>
+    </div>
+</div>

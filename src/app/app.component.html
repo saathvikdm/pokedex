@@ -1,9 +1,11 @@
 <div class="app-root">
-    <mat-toolbar>
-      <img src="../../../assets/pokeball.png" height="25px" width="25px"><span style="margin-left: '5px'">PokeDex</span>
-      </mat-toolbar>
-      <app-character></app-character>
-    <mat-toolbar>
+    <mat-toolbar class="toolbar">
+      <img src="../../../assets/pokeball.png" height="25px" width="25px"><span style="margin-left: '5px'"><a routerLink="/">PokeDex</a></span>
+      <span class="spacer"></span>
+      <a routerLink="my-pokemon">My Pokemon</a>  
+    </mat-toolbar>
+      <router-outlet></router-outlet>
+    <mat-toolbar class="footer">
         <span>Copyright &copy; 2022</span>
       </mat-toolbar>
 </div>

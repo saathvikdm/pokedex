@@ -2,23 +2,30 @@
     <div class="app-search form-group">
       <img src="../../../assets/pokeball.png" height="50px" width="50px">
         <mat-form-field appearance="fill" class="app-search-input">
-            <mat-label class="color-white ">Search Pokemon</mat-label>
-            <input matInput type="text" class="color-white " [(ngModel)]="searchText" (input)="searchFilter()" placeholder="Enter text to search">
+            <mat-label>Search Pokemon</mat-label>
+            <input matInput type="text" [(ngModel)]="searchText" (input)="searchFilter()" placeholder="Enter text to search">
             <button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="searchText=''">
               <mat-icon>close</mat-icon>
             </button>
           </mat-form-field>
-          <button mat-button [matMenuTriggerFor]="menu"  class="app-filter">{{typeFilter ? "Type: " + typeFilter.toUpperCase() : 'Filter by Type'}}</button>
-          <mat-menu #menu="matMenu" [(ngModel)]="typeFilter" ngDefaultControl>
-            <button mat-menu-item (click)="clickMenuReset()">Reset Filter</button>
-            <button mat-menu-item *ngFor="let type of types" (click)="clickMenuItem(type)">{{type['name']}}</button>
-          </mat-menu>
+          
+          <div class="app-filter-menu">
+            <button mat-button [matMenuTriggerFor]="menu"  class="app-filter">{{typeFilter ? "Type: " + typeFilter.toUpperCase() : 'Filter by Type'}}</button>
+            <mat-menu #menu="matMenu" [(ngModel)]="typeFilter" ngDefaultControl>
+              <!-- <button mat-menu-item (click)="clickMenuReset()">Reset Filter</button> -->
+              <button mat-menu-item *ngFor="let type of types" (click)="clickMenuItem(type)">{{type['name'] | uppercase }}</button>
+            </mat-menu>
+            <button *ngIf="typeFilter" mat-icon-button aria-label="Clear"  (click)="clickMenuReset()">
+              <mat-icon class="app-reset-filter-icon">close</mat-icon>
+            </button>
+          </div>
       </div>
       <div class="characters">
+        <h2 class="color-white" *ngIf="pokemon.length === 0">No data</h2>
         <app-character-item
-            *ngFor="let poke of pokemon | pokeFilter: searchText | paginate: { itemsPerPage: 20, currentPage: p }"
-            [pokemon]="poke"
-        ></app-character-item>
+          *ngFor="let poke of pokemon | pokeFilter: searchText | paginate: { itemsPerPage: 20, currentPage: p }"
+          [pokemon]="poke"
+      ></app-character-item>
     </div>
     <pagination-controls (pageChange)="p = $event"></pagination-controls>    
 </div>

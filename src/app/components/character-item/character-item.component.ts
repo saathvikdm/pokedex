@@ -22,14 +22,19 @@ import { CharacterService } from 'src/app/services/character.service';
 })
 export class CharacterItemComponent implements OnInit {
   @Input() pokemon: any;
+  @Output() releasePoke: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
-    this.dialog.open(CharacterItemDialogComponent, {
+    let dialogRef = this.dialog.open(CharacterItemDialogComponent, {
       width: '250px',
       data: this.pokemon,
     });
+
+    dialogRef.componentInstance.onRelease.subscribe(() =>
+      this.releasePoke.emit(this.pokemon)
+    );
   }
 
   ngOnInit(): void {}
