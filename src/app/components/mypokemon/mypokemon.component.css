@@ -1,3 +1,7 @@
+.col-white {
+    color: white;
+}
+
 .my-pokemon {
     height: 80vh;
     display: flex;
@@ -11,4 +15,18 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    background: white;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.login-button {
+    width: 100%;
 }

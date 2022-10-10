@@ -1,10 +1,28 @@
 <div class="my-pokemon">
-    <h1>My Pokemon Collection</h1>
-    <div class="characters">
-    <app-character-item
-          *ngFor="let poke of pokemon"
-          [pokemon]="poke"
-          (releasePoke)="releasePokemon($event)"
-      ></app-character-item>
+    <form [formGroup]="form" class="login-form" *ngIf="!loggedIn">
+        <h2>Login to MyPokemon</h2>
+        <p>  
+            <mat-form-field appearance="outline">
+                <mat-label>Enter Email</mat-label>
+                <input name="email" formControlName="email" matInput placeholder="someone@somemail.com">
+            </mat-form-field>
+        </p>
+        <p>  
+            <mat-form-field appearance="outline">
+                <mat-label>Enter Password</mat-label>
+                <input type="password" name="password" formControlName="password" matInput>
+            </mat-form-field>
+        </p>
+        <button mat-raised-button color="primary" class="login-button" (click)="login()">Login</button>
+    </form>
+    <div class="my-pokemon" *ngIf="loggedIn">
+        <h1 class="col-white">My Pokemon Collection</h1>
+        <div class="characters">
+            <app-character-item
+            *ngFor="let poke of pokemon"
+            [pokemon]="poke"
+            (releasePoke)="releasePokemon($event)"
+            ></app-character-item>
+        </div>
     </div>
 </div>

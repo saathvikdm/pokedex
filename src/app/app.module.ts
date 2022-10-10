@@ -11,6 +11,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
 import { CharacterComponent } from './components/character/character.component';
@@ -42,6 +45,9 @@ import { MypokemonComponent } from './components/mypokemon/mypokemon.component';
     MatToolbarModule,
     NgxPaginationModule,
     MatMenuModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

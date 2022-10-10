@@ -1,8 +1,9 @@
 <div class="app-root">
     <mat-toolbar class="toolbar">
-      <img src="../../../assets/pokeball.png" height="25px" width="25px"><span style="margin-left: '5px'"><a routerLink="/">PokeDex</a></span>
+      <img src="../../../assets/pokeball.png" height="25px" width="25px"><span style="margin-left: '5px'"><a routerLink="/" style="text-decoration: none;">PokeDex</a></span>
       <span class="spacer"></span>
-      <a routerLink="my-pokemon">My Pokemon</a>  
+      <button mat-button color="primary" routerLink="my-pokemon">My Pokemon</button>
+      <button mat-button color="warn" *ngIf="loggedIn" (click)="logout()">Logout</button>
     </mat-toolbar>
       <router-outlet></router-outlet>
     <mat-toolbar class="footer">
