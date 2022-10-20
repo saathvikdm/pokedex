@@ -1,5 +1,5 @@
 <div class="my-pokemon">
-    <form [formGroup]="form" class="login-form" *ngIf="!loggedIn">
+    <form [formGroup]="form" class="login-form" *ngIf="!loggedIn && !register">
         <h2>Login to MyPokemon</h2>
         <p>  
             <mat-form-field appearance="outline">
@@ -13,7 +13,37 @@
                 <input type="password" name="password" formControlName="password" matInput>
             </mat-form-field>
         </p>
-        <button mat-raised-button color="primary" class="login-button" (click)="login()">Login</button>
+        <button mat-raised-button color="primary" type="button" class="login-button" (click)="login()">Login</button>
+        <button mat-raised-button color="accent" type="button" class="login-button" (click)="registerAction()">Register</button>
+    </form>
+    <form [formGroup]="form" class="login-form" *ngIf="!loggedIn && register">
+        <h2>Register to MyPokemon</h2>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter Name</mat-label>
+                <input name="displayname" formControlName="displayname" matInput placeholder="John Doe">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter Username</mat-label>
+                <input name="username" formControlName="username" matInput placeholder="someone">
+            </mat-form-field>
+        </p>
+        <p>  
+            <mat-form-field appearance="outline">
+                <mat-label>Enter Email</mat-label>
+                <input name="email" formControlName="email" matInput placeholder="someone@somemail.com">
+            </mat-form-field>
+        </p>
+        <p>  
+            <mat-form-field appearance="outline">
+                <mat-label>Enter Password</mat-label>
+                <input type="password" name="password" formControlName="password" matInput>
+            </mat-form-field>
+        </p>
+        <button mat-raised-button color="primary" type="button" class="login-button" (click)="signUp()">Sign up!</button>
+        <button mat-raised-button color="accent" type="button" class="login-button" (click)="registerAction()">Go back to Login</button>
     </form>
     <div class="my-pokemon" *ngIf="loggedIn">
         <h1 class="col-white">My Pokemon Collection</h1>

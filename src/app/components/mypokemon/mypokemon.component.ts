@@ -3,7 +3,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { CharacterService } from 'src/app/services/character.service';
-import jwt_decode from 'jwt-decode';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+  MatSnackBarRef,
+} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-mypokemon',
@@ -11,9 +16,13 @@ import jwt_decode from 'jwt-decode';
   styleUrls: ['./mypokemon.component.css'],
 })
 export class MypokemonComponent implements OnInit {
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
   pokemon: any = [];
   form: FormGroup;
   loggedIn: boolean = false;
+  register: boolean = false;
 
   releasePokemon(poke: any) {
     console.log('event', poke);
@@ -31,12 +40,37 @@ export class MypokemonComponent implements OnInit {
     private characterService: CharacterService,
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {
     this.form = this.fb.group({
-      email: ['', Validators.required],
+      email: ['', Validators.required, Validators.email],
       password: ['', Validators.required],
+      displayname: ['', Validators.required],
+      username: ['', Validators.required],
     });
+  }
+
+  registerAction() {
+    this.register = !this.register;
+  }
+
+  signUp() {
+    const val = this.form.value;
+    if (val.email && val.username && val.password && val.displayname) {
+      this.authService
+        .signUp(val.email, val.username, val.password, val.displayname)
+        .subscribe((res) => {
+          if (res) {
+            this.registerAction();
+            this._snackBar.open('Successfully registered!', '', {
+              duration: 3000,
+              horizontalPosition: this.horizontalPosition,
+              verticalPosition: this.verticalPosition,
+            });
+          }
+        });
+    }
   }
 
   login() {
